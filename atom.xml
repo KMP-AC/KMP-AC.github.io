@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://KMP-AC.github.io</id>
     <title>KMP的小栈</title>
-    <updated>2020-05-02T23:46:52.869Z</updated>
+    <updated>2020-05-04T16:17:07.465Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://KMP-AC.github.io"/>
     <link rel="self" href="https://KMP-AC.github.io/atom.xml"/>
@@ -10,6 +10,155 @@
     <logo>https://KMP-AC.github.io/images/avatar.png</logo>
     <icon>https://KMP-AC.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, KMP的小栈</rights>
+    <entry>
+        <title type="html"><![CDATA[题解 P5149 【会议座位】]]></title>
+        <id>https://KMP-AC.github.io/ti-jie-p5149-hui-yi-zuo-wei/</id>
+        <link href="https://KMP-AC.github.io/ti-jie-p5149-hui-yi-zuo-wei/">
+        </link>
+        <updated>2020-05-04T15:40:08.000Z</updated>
+        <content type="html"><![CDATA[<p>emm...</p>
+<p>首先，我们读题，看到这篇题解的你，之前是不是重复看到过一个极为核心的词语：<strong>逆序对</strong>！</p>
+<p>建议先写完<a href="https://www.luogu.com.cn/problem/P1908">P1908逆序对</a>再来做此题，也可以配合题解使用。</p>
+<p>我用的是<strong>归并排序</strong>+<strong>Trie</strong>.</p>
+<p>Trie其实可以用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Map</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span></span></span></span>代替，所以前置芝士是：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mo>−</mo><mi>s</mi><mi>o</mi><mi>r</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Merge-sort
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span></span></span></span></span></p>
+<p>在此，先简单介绍一下归并排序：</p>
+<p>归并排序由三个部分组成：分解、合并，归返（其实是我起的qwq）</p>
+<p>归并排序是一种分治算法，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>分解：按左右进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord">2</span></span></span></span>的划分下去。</p>
+<p>合并：由于底部的左右段已经有序，所以可以直接合并。</p>
+<p>归返：就是递归到一个数时返回上一层，然后一层一层回去。</p>
+<p>在这里，先贴一个板子：</p>
+<pre><code class="language-cpp">void qsort(int a,int b)//左右
+{	
+    if(a==b)return;//递归到一个数返回
+	int mid=(a+b)&gt;&gt;1;//划分中心
+	int i=a,j=mid+1,k=a;
+    qsort(a,mid),qsort(mid+1,b);左右递归
+    while(i&lt;=mid&amp;&amp;j&lt;=b)//有序合并
+	if(c[i]&lt;=c[j])
+	  {
+	  	d[k++]=c[i++];
+	  }
+	else 
+	  {
+	  	d[k++]=c[j++];
+	  	ans+=mid-i+1;//求逆序对
+	  }
+	while(i&lt;=mid)//处理没填完的
+	  	d[k++]=c[i++];
+	while(j&lt;=b)
+	    d[k++]=c[j++];
+	for(int l=a;l&lt;=b;l++)//操作完赋值
+	    c[l]=d[l];
+}
+</code></pre>
+<p>至于Trie,此处给出模板题：<a href="https://www.luogu.com.cn/problem/P2580">P2580 于是他错误的点名开始了</a></p>
+<p>然后就是放代码了（qwq喜闻乐见：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;map&gt;
+using namespace std;
+#define N 500005
+#define rr register
+#define C 30
+string s,w;
+int n; 
+long long ans=0;
+int ch[N][C],tot=1;
+int a[N],b[N];
+int val[N]; 
+map&lt;string,int&gt;mp;
+void msort(int l,int r);
+int idx(char s);
+void insert(string s,int x);
+int find(string s);
+char turn(char x);
+int main()
+{ 
+  cin&gt;&gt;n;
+  for(int i=1;i&lt;=n;i++) 
+  {
+  string s;
+  cin&gt;&gt;s;
+  insert(s,i);
+  mp[s]=i;	
+  }
+  for(int i=1;i&lt;=n;i++) 
+  {
+  string s;
+  cin&gt;&gt;s;
+  a[i]=mp[s];	
+  }
+  msort(1,n); 
+  cout&lt;&lt;ans;
+  return 0; 
+}
+int idx(char x)
+{
+    int v;
+    v=(int)(x-'A');
+    return v;
+}
+void insert(string s,int x)
+{
+    int len=s.size()-1;
+    int las=0,w;
+    for(rr int i=0;i&lt;=len;i++)
+    {
+        w=idx(s[i]);
+        if(ch[las][w]==0) 
+         ch[las][w]=++tot;
+        las=ch[las][w];
+    }
+    val[las]=x; 
+    return;
+}
+int find(string s)
+{
+    int len=s.size()-1;
+    int las=0,w;
+    for(rr int i=0;i&lt;=len;i++)
+    {
+        w=idx(s[i]);
+        las=ch[las][w];
+    }
+    return val[las];
+} 
+char turn(char x)
+{
+	if(x&gt;='A'&amp;&amp;x&lt;='Z') return (x+32);
+	else return x;
+}
+void msort(int l,int r)
+{
+if(l==r) return;
+int mid=(l+r)/2;
+msort(l,mid);
+msort(mid+1,r);
+int i=l,j=mid+1,num=l;
+while(i&lt;=mid&amp;&amp;j&lt;=r)
+{
+	if(a[i]&lt;=a[j])
+	b[num]=a[i],num++,i++;
+	else
+	{
+		ans+=mid-i+1;
+		b[num]=a[j],j++,num++;
+	}
+}
+while(i&lt;=mid) b[num]=a[i],num++,i++;
+while(j&lt;=r) b[num]=a[j],num++,j++;
+for(int i=l;i&lt;=r;i++)
+a[i]=b[i];
+} 
+</code></pre>
+<p>本篇题解到这里就结束了，谢谢管理员大大看到这里。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[情书(大雾)]]></title>
         <id>https://KMP-AC.github.io/qing-shu-da-wu/</id>

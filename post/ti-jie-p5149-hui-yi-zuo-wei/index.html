@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="KMP基于Github于Gridea搭建的小站,欢迎大家!">
 <meta name="theme-color" content="#000">
-<title>KMP的小栈</title>
+<title>题解 P5149 【会议座位】 | KMP的小栈</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1588859097716">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -34,6 +34,8 @@
 
 
 
+  <meta name="description" content="题解 P5149 【会议座位】" />
+  <meta name="keywords" content="归并排序,Trie" />
 </head>
 
 <body>
@@ -159,10 +161,25 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -197,70 +214,324 @@
 
 
 </div>
+          
+        
+      </div>
+    </div>
+  
 </div>
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
       }
-    });
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
   }
-  </script>
-        <div class="section-box tag-line box-shadow-wrapper">
-          <section class="section tags-section posts-expand bg-color">
-            <div class="padding-wrapper">
-  <div class="tag-timeline-box">
-    <div class="tag-timeline-wrapper">
-      <div class="tag-timeline-title">
-        <h2>
-          BFS
-          <small>标签</small>
-        </h2>
-      </div>
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://KMP-AC.github.io/post/ti-jie-p5149-hui-yi-zuo-wei/">
+      题解 P5149 【会议座位】
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-05-04</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show">分类于</span>
+      
+      
+      <a href="https://KMP-AC.github.io/tag/3uVQDfVev/">
+        <span>归并排序</span>
+      </a>、
       
       
       
-      
-      
-      <a href="https://KMP-AC.github.io/post/ban-yun-idbfs/">
-        <div class="motion-warpper">
-          <div class="tag-post-node">
-            <h1>
-              05-06
-              <small>搬运-IDBFS</small>
-            </h1>
-          </div>
-        </div>
+      <a href="https://KMP-AC.github.io/tag/2V7s1LOzW/">
+        <span>Trie</span>
       </a>
       
       
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>4分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>742<span class="pc-show">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <p>emm...</p>
+<p>首先，我们读题，看到这篇题解的你，之前是不是重复看到过一个极为核心的词语：<strong>逆序对</strong>！</p>
+<p>建议先写完<a href="https://www.luogu.com.cn/problem/P1908">P1908逆序对</a>再来做此题，也可以配合题解使用。</p>
+<p>我用的是<strong>归并排序</strong>+<strong>Trie</strong>.</p>
+<p>Trie其实可以用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Map</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span></span></span></span>代替，所以前置芝士是：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mo>−</mo><mi>s</mi><mi>o</mi><mi>r</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Merge-sort
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span></span></span></span></span></p>
+<p>在此，先简单介绍一下归并排序：</p>
+<p>归并排序由三个部分组成：分解、合并，归返（其实是我起的qwq）</p>
+<p>归并排序是一种分治算法，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
+<p>分解：按左右进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord">2</span></span></span></span>的划分下去。</p>
+<p>合并：由于底部的左右段已经有序，所以可以直接合并。</p>
+<p>归返：就是递归到一个数时返回上一层，然后一层一层回去。</p>
+<p>在这里，先贴一个板子：</p>
+<pre><code class="language-cpp">void qsort(int a,int b)//左右
+{	
+    if(a==b)return;//递归到一个数返回
+	int mid=(a+b)&gt;&gt;1;//划分中心
+	int i=a,j=mid+1,k=a;
+    qsort(a,mid),qsort(mid+1,b);左右递归
+    while(i&lt;=mid&amp;&amp;j&lt;=b)//有序合并
+	if(c[i]&lt;=c[j])
+	  {
+	  	d[k++]=c[i++];
+	  }
+	else 
+	  {
+	  	d[k++]=c[j++];
+	  	ans+=mid-i+1;//求逆序对
+	  }
+	while(i&lt;=mid)//处理没填完的
+	  	d[k++]=c[i++];
+	while(j&lt;=b)
+	    d[k++]=c[j++];
+	for(int l=a;l&lt;=b;l++)//操作完赋值
+	    c[l]=d[l];
+}
+</code></pre>
+<p>至于Trie,此处给出模板题：<a href="https://www.luogu.com.cn/problem/P2580">P2580 于是他错误的点名开始了</a></p>
+<p>然后就是放代码了（qwq喜闻乐见：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;map&gt;
+using namespace std;
+#define N 500005
+#define rr register
+#define C 30
+string s,w;
+int n; 
+long long ans=0;
+int ch[N][C],tot=1;
+int a[N],b[N];
+int val[N]; 
+map&lt;string,int&gt;mp;
+void msort(int l,int r);
+int idx(char s);
+void insert(string s,int x);
+int find(string s);
+char turn(char x);
+int main()
+{ 
+  cin&gt;&gt;n;
+  for(int i=1;i&lt;=n;i++) 
+  {
+  string s;
+  cin&gt;&gt;s;
+  insert(s,i);
+  mp[s]=i;	
+  }
+  for(int i=1;i&lt;=n;i++) 
+  {
+  string s;
+  cin&gt;&gt;s;
+  a[i]=mp[s];	
+  }
+  msort(1,n); 
+  cout&lt;&lt;ans;
+  return 0; 
+}
+int idx(char x)
+{
+    int v;
+    v=(int)(x-'A');
+    return v;
+}
+void insert(string s,int x)
+{
+    int len=s.size()-1;
+    int las=0,w;
+    for(rr int i=0;i&lt;=len;i++)
+    {
+        w=idx(s[i]);
+        if(ch[las][w]==0) 
+         ch[las][w]=++tot;
+        las=ch[las][w];
+    }
+    val[las]=x; 
+    return;
+}
+int find(string s)
+{
+    int len=s.size()-1;
+    int las=0,w;
+    for(rr int i=0;i&lt;=len;i++)
+    {
+        w=idx(s[i]);
+        las=ch[las][w];
+    }
+    return val[las];
+} 
+char turn(char x)
+{
+	if(x&gt;='A'&amp;&amp;x&lt;='Z') return (x+32);
+	else return x;
+}
+void msort(int l,int r)
+{
+if(l==r) return;
+int mid=(l+r)/2;
+msort(l,mid);
+msort(mid+1,r);
+int i=l,j=mid+1,num=l;
+while(i&lt;=mid&amp;&amp;j&lt;=r)
+{
+	if(a[i]&lt;=a[j])
+	b[num]=a[i],num++,i++;
+	else
+	{
+		ans+=mid-i+1;
+		b[num]=a[j],j++,num++;
+	}
+}
+while(i&lt;=mid) b[num]=a[i],num++,i++;
+while(j&lt;=r) b[num]=a[j],num++,j++;
+for(int i=l;i&lt;=r;i++)
+a[i]=b[i];
+} 
+</code></pre>
+<p>本篇题解到这里就结束了，谢谢管理员大大看到这里。</p>
+
+            </div>
+            <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      适用 Gemini,Pisces 布局,版权说明需配置
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://KMP-AC.github.io/post/ti-jie-p5149-hui-yi-zuo-wei/" title="题解 P5149 【会议座位】">https://KMP-AC.github.io/post/ti-jie-p5149-hui-yi-zuo-wei/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://KMP-AC.github.io/tag/3uVQDfVev/"># 归并排序</a>
+    
+      <a href="https://KMP-AC.github.io/tag/2V7s1LOzW/"># Trie</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
       
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="搬运-IDBFS" href="https://KMP-AC.github.io/post/ban-yun-idbfs/">搬运-IDBFS</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="搬运-IDBFS" href="https://KMP-AC.github.io/post/ban-yun-idbfs/">上一篇</a>
       
+    </div>
+    <div class="nav-next">
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+        <a class="nav-pc-next" title="情书(大雾)" href="https://KMP-AC.github.io/post/qing-shu-da-wu/">情书(大雾)</a>
+        <a class="nav-mobile-next" title="情书(大雾)" href="https://KMP-AC.github.io/post/qing-shu-da-wu/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
 </div>
-          </section>
+            
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -981,6 +1252,36 @@
   hljs.initHighlightingOnLoad();
 
 </script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
   </div>
 </body>
 <input hidden id="copy" />
@@ -1480,7 +1781,6 @@ by---command_block神仙
 <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
 <script type="text/javascript" src="/media/js/mouse/fireworks.js"></script>
-
 
 
 </html>

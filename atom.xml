@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://KMP-AC.github.io</id>
     <title>KMP的小栈</title>
-    <updated>2020-05-07T13:41:44.767Z</updated>
+    <updated>2020-05-07T13:45:03.807Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://KMP-AC.github.io"/>
     <link rel="self" href="https://KMP-AC.github.io/atom.xml"/>
@@ -12,368 +12,37 @@
     <rights>All rights reserved 2020, KMP的小栈</rights>
     <entry>
         <title type="html"><![CDATA[骗分笔记]]></title>
-        <id>https://KMP-AC.github.io/pian-fen-bi-ji/</id>
-        <link href="https://KMP-AC.github.io/pian-fen-bi-ji/">
+        <id>https://KMP-AC.github.io/post/pian-fen-bi-ji/</id>
+        <link href="https://KMP-AC.github.io/post/pian-fen-bi-ji/">
         </link>
         <updated>2020-05-06T05:51:53.000Z</updated>
-        <content type="html"><![CDATA[<p>这里使用的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>S</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>l</mi><mi>g</mi><mi>o</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>h</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">DS|Algorithm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">m</span></span></span></span>都为统称.</p>
-<p>目录:</p>
-<ul>
-<li>第一章：万能技能书-&gt;模拟</li>
-<li>第二章：自以为是-&gt;贪心</li>
-<li>第三章</li>
-</ul>
-<p>第一章：</p>
-<p>我们先不理解 “<strong>模拟</strong>” 要先从实战入手。</p>
-<p>首先我们来看这道题：</p>
-<pre><code>有n个数
-
-时间：2s
-m个询问，在线询问l~r有多少个X，并且l单调上升
-r单调下降.
-
-m=n
-
-10% N&lt;=10^2
-40% N&lt;=10^4
-60% N&lt;=10^5
-80% N&lt;=10^6
-100% N&lt;=10^7
-</code></pre>
-<p>显然珂以模拟<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>−</mo><mi>n</mi><mn>40</mn><mi>p</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">1-n40pts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mord">4</span><span class="mord">0</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span></span></span></span>,这已经是一个相当之高的分数了。</p>
-<p>在正解是要线性复杂度的情况下，这已经相当可观了。</p>
-<p>但是正解也是模拟性的数据结构！所以说模拟是各种题目但万能技能书！</p>
-<p>模拟<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>40</mn><mi>p</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">40pts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>即可。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>60</mn><mi>p</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">60pts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span></span></span></span>使用map套线段树即可，复杂度：</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>l</mi><mi>o</mi><msup><mi>g</mi><mn>2</mn></msup><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">nlog^2(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>80</mn><mi>p</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">80pts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">8</span><span class="mord">0</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span></span></span></span> 留给线性字符串查询+线段树。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">nlog(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>时间复杂度。</p>
-<p>正解<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mi>p</mi><mi>t</mi><mi>s</mi><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">100pts Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span> 套 <strong>双端队列</strong></p>
-<p>？为什么呢？原因是：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo separator="true">,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l,r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>分别单调上升下降.</p>
-<p>每次在队列里修改即可。</p>
-<p>题目Link:<a href="https://www.luogu.com.cn/problem/T122553">然鹅窝的常数太大只能跑到10^6.</a></p>
-<p><s>至于模拟，去练猪国杀你就达到了巅峰。</s></p>
-<p>第二章</p>
-<p>贪心，向来是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mi>i</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">Oier</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>在考场上的首选，因为它推不用推柿子。</p>
-<p>贪心就是按你认为怎么对怎么写，需要考验思维</p>
-<p>但贪心只是局部最优解，要写全局最优解还是要DP.</p>
-<p>我们依旧从一道题入手：</p>
-<pre><code>有N个人，一条船的载重量为V,每条船珂以坐两人，每个人的重量为a[i]，求最少坐几条船。
-</code></pre>
-<p>看到这题的第一眼你是不是大的跟小的配？</p>
-<p>欸！你对了，我们只需要排序+双指针扫即可。</p>
-<p>Link:<a href="https://www.luogu.com.cn/problem/P1094">P1094</a></p>
-<p>注意：贪心需要证明，请慎用。</p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[搬运-IDBFS]]></title>
-        <id>https://KMP-AC.github.io/ban-yun-idbfs/</id>
-        <link href="https://KMP-AC.github.io/ban-yun-idbfs/">
+        <id>https://KMP-AC.github.io/post/ban-yun-idbfs/</id>
+        <link href="https://KMP-AC.github.io/post/ban-yun-idbfs/">
         </link>
         <updated>2020-05-06T05:50:34.000Z</updated>
-        <content type="html"><![CDATA[<p>D-BFS就是以深搜执行代替广搜，因为他们都有一个性质:</p>
-<ul>
-<li>以当前节点进行操作</li>
-</ul>
-<p>那么广搜是采用<strong>扩展操作</strong>，深搜就是<strong>迭代操作</strong>。</p>
-<p>给个例子：</p>
-<figure data-type="image" tabindex="1"><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2143458375,909871441&amp;fm=11&amp;gp=0.jpg" alt="" loading="lazy"></figure>
-<p><s>这个是网图</s>，你可以看到，这个图广搜工作量比较多，深搜工作量比较少。</p>
-<p>那么，就有一些毒瘤出题人会卡你的广搜，深搜直接搜到<s>最短路</s>.</p>
-<p>那么此处，给出一个深搜版广搜的伪代码：</p>
-<pre><code class="language-cpp">queue&lt;int&gt;queue;
-int ans=0,t;
-void Bfs(int x,int deep)
-{
-  if(x==t) ans=deep,return;
-  if(deep==ans||queue.empty()) exit(0);
-  for(扩展）
-  queue.pop();
-  BFS(队头)
-}
-</code></pre>
-<p>这个不是很鸡肋吗，我广搜吊打他。</p>
-<p>的确很鸡肋，但我还有一个更好的。</p>
-<p>比如说最短路，BFS只能解决无权，如果可以解决有权，整么办？</p>
-<p>这时候，如果你想反悔，回到一个点，那么你可以整么办？回溯！这是你的脑子里会不会想到这个?</p>
-<p>没错，我们可以这样想:写一个数组来记录状态！这样我们就可以回去某一步！</p>
-<p>但是这还不够，我们需要一个<strong>严格正确</strong>的判断来进行优化！于是<strong>启发式搜索</strong>又来了！</p>
-<p>我们可以想<strong>贪心</strong>(骗分嘛）<strong>策略</strong>,选一条边权最小的边！</p>
-<p>我们可以在建图时优化，还可以使用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>M</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(NlogM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>的快排或者<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>M</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>的基排。</p>
-<p>然后有会有一种数据卡爆你！就是垫底，然后一个负权!</p>
-<p>所以，这个也不行!</p>
-<h1 id="id-bfs">ID-BFS</h1>
-<p>没错，迭代加深！如果每次都跑不过一个K,那扩展干什么?</p>
-<p>放弃正确性!考虑一个贪心最简单最错误却最让人想不到！</p>
-<ul>
-<li>如果某个点F的最短路已经是最短的，那么设置上限为最短+次短!</li>
-</ul>
-<p>那么，这当然是一个极为不错的主意，其实会被卡爆...</p>
-<h4 id="但是这至少比spfa要快">但是这至少比<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi><mi>F</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">SPFA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">A</span></span></span></span>要快！</h4>
-<p>如果要更快，可以选择BFS提前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>遍历一下，可以优化回溯操作。</p>
-<p>咕咕咕...</p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[题解 P5149 【会议座位】]]></title>
-        <id>https://KMP-AC.github.io/ti-jie-p5149-hui-yi-zuo-wei/</id>
-        <link href="https://KMP-AC.github.io/ti-jie-p5149-hui-yi-zuo-wei/">
+        <id>https://KMP-AC.github.io/post/ti-jie-p5149-hui-yi-zuo-wei/</id>
+        <link href="https://KMP-AC.github.io/post/ti-jie-p5149-hui-yi-zuo-wei/">
         </link>
         <updated>2020-05-04T15:40:08.000Z</updated>
-        <content type="html"><![CDATA[<p>emm...</p>
-<p>首先，我们读题，看到这篇题解的你，之前是不是重复看到过一个极为核心的词语：<strong>逆序对</strong>！</p>
-<p>建议先写完<a href="https://www.luogu.com.cn/problem/P1908">P1908逆序对</a>再来做此题，也可以配合题解使用。</p>
-<p>我用的是<strong>归并排序</strong>+<strong>Trie</strong>.</p>
-<p>Trie其实可以用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Map</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span></span></span></span>代替，所以前置芝士是：</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>e</mi><mi>r</mi><mi>g</mi><mi>e</mi><mo>−</mo><mi>s</mi><mi>o</mi><mi>r</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Merge-sort
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span></span></span></span></span></p>
-<p>在此，先简单介绍一下归并排序：</p>
-<p>归并排序由三个部分组成：分解、合并，归返（其实是我起的qwq）</p>
-<p>归并排序是一种分治算法，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>.</p>
-<p>分解：按左右进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord">2</span></span></span></span>的划分下去。</p>
-<p>合并：由于底部的左右段已经有序，所以可以直接合并。</p>
-<p>归返：就是递归到一个数时返回上一层，然后一层一层回去。</p>
-<p>在这里，先贴一个板子：</p>
-<pre><code class="language-cpp">void qsort(int a,int b)//左右
-{	
-    if(a==b)return;//递归到一个数返回
-	int mid=(a+b)&gt;&gt;1;//划分中心
-	int i=a,j=mid+1,k=a;
-    qsort(a,mid),qsort(mid+1,b);左右递归
-    while(i&lt;=mid&amp;&amp;j&lt;=b)//有序合并
-	if(c[i]&lt;=c[j])
-	  {
-	  	d[k++]=c[i++];
-	  }
-	else 
-	  {
-	  	d[k++]=c[j++];
-	  	ans+=mid-i+1;//求逆序对
-	  }
-	while(i&lt;=mid)//处理没填完的
-	  	d[k++]=c[i++];
-	while(j&lt;=b)
-	    d[k++]=c[j++];
-	for(int l=a;l&lt;=b;l++)//操作完赋值
-	    c[l]=d[l];
-}
-</code></pre>
-<p>至于Trie,此处给出模板题：<a href="https://www.luogu.com.cn/problem/P2580">P2580 于是他错误的点名开始了</a></p>
-<p>然后就是放代码了（qwq喜闻乐见：</p>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;map&gt;
-using namespace std;
-#define N 500005
-#define rr register
-#define C 30
-string s,w;
-int n; 
-long long ans=0;
-int ch[N][C],tot=1;
-int a[N],b[N];
-int val[N]; 
-map&lt;string,int&gt;mp;
-void msort(int l,int r);
-int idx(char s);
-void insert(string s,int x);
-int find(string s);
-char turn(char x);
-int main()
-{ 
-  cin&gt;&gt;n;
-  for(int i=1;i&lt;=n;i++) 
-  {
-  string s;
-  cin&gt;&gt;s;
-  insert(s,i);
-  mp[s]=i;	
-  }
-  for(int i=1;i&lt;=n;i++) 
-  {
-  string s;
-  cin&gt;&gt;s;
-  a[i]=mp[s];	
-  }
-  msort(1,n); 
-  cout&lt;&lt;ans;
-  return 0; 
-}
-int idx(char x)
-{
-    int v;
-    v=(int)(x-'A');
-    return v;
-}
-void insert(string s,int x)
-{
-    int len=s.size()-1;
-    int las=0,w;
-    for(rr int i=0;i&lt;=len;i++)
-    {
-        w=idx(s[i]);
-        if(ch[las][w]==0) 
-         ch[las][w]=++tot;
-        las=ch[las][w];
-    }
-    val[las]=x; 
-    return;
-}
-int find(string s)
-{
-    int len=s.size()-1;
-    int las=0,w;
-    for(rr int i=0;i&lt;=len;i++)
-    {
-        w=idx(s[i]);
-        las=ch[las][w];
-    }
-    return val[las];
-} 
-char turn(char x)
-{
-	if(x&gt;='A'&amp;&amp;x&lt;='Z') return (x+32);
-	else return x;
-}
-void msort(int l,int r)
-{
-if(l==r) return;
-int mid=(l+r)/2;
-msort(l,mid);
-msort(mid+1,r);
-int i=l,j=mid+1,num=l;
-while(i&lt;=mid&amp;&amp;j&lt;=r)
-{
-	if(a[i]&lt;=a[j])
-	b[num]=a[i],num++,i++;
-	else
-	{
-		ans+=mid-i+1;
-		b[num]=a[j],j++,num++;
-	}
-}
-while(i&lt;=mid) b[num]=a[i],num++,i++;
-while(j&lt;=r) b[num]=a[j],num++,j++;
-for(int i=l;i&lt;=r;i++)
-a[i]=b[i];
-} 
-</code></pre>
-<p>本篇题解到这里就结束了，谢谢管理员大大看到这里。</p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[情书(大雾)]]></title>
-        <id>https://KMP-AC.github.io/qing-shu-da-wu/</id>
-        <link href="https://KMP-AC.github.io/qing-shu-da-wu/">
+        <id>https://KMP-AC.github.io/post/qing-shu-da-wu/</id>
+        <link href="https://KMP-AC.github.io/post/qing-shu-da-wu/">
         </link>
         <updated>2020-05-02T03:09:57.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<p>前置芝士：<a href="https://pks-loving.blog.luogu.org/zi-fu-chuan-xue-xi-bi-ji-ha-xi-hash-yu-zi-dian-shu-trie">Trie入门</a>。</p>
-<p>必备芝士：<a href="https://zhuanlan.zhihu.com/p/80814657">二分查找</a></p>
-<p>楼下有很多写<a href="https://www.cnblogs.com/ZY-Dream/p/10037931.html">STL-Map</a>的大佬。</p>
-<p>蒟蒻只能写一个Trie乱搞。</p>
-<p>CYY是我朋友。</p>
-<p>这道题就是存Trie以及查寻清空的思想。</p>
-<p>大佬有建议就评论，谢谢！</p>
-<p><a href="https://www.luogu.com.cn/paste/11knzk0e">Trie更好的讲解。</a></p>
-<p><a href="https://www.luogu.com.cn/paste/pjr8esmn">旧版注释代码。</a></p>
-<p><a href="https://www.luogu.com.cn/paste/oka3vrkx">如果上面都不会，来看看这个。</a></p>
-<p>个人非常推荐二分查找法，因为根本没到1ms.</p>
-<p><em>update</em>:2020-2-1(没写bo数组，不然可以更快的)。</p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[大事迹]]></title>
-        <id>https://KMP-AC.github.io/da-shi-ji/</id>
-        <link href="https://KMP-AC.github.io/da-shi-ji/">
+        <id>https://KMP-AC.github.io/post/da-shi-ji/</id>
+        <link href="https://KMP-AC.github.io/post/da-shi-ji/">
         </link>
         <updated>2020-05-02T02:24:37.000Z</updated>
-        <content type="html"><![CDATA[<h5 id="置顶如果一个人比你还小却比你学的快那么你就珂以退役了-显然窝是退役的那个人">置顶：如果一个人比你还小，却比你学的快，那么你就珂以退役了。显然窝是退役的那个人.</h5>
-<h5 id="次顶fs的珂以来康康">次顶：<a href="https://www.luogu.com.cn/blog/emdams-karp/xiao-liu-fo-shan-oi-bao-dian">FS的珂以来康康</a></h5>
-<p><a href="https://www.luogu.com.cn/blog/emdams-karp/you-lian">珂以来加友链</a></p>
-<p>这个菜鸡快初中了，看到他快D他.</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mi>L</mi><mi>A</mi><mi>G</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">FLAG:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">L</span><span class="mord mathdefault">A</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>o</mi><mi>i</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Noip</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">o</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>g</mi><mo>+</mo><mi>p</mi><mi>j</mi></mrow><annotation encoding="application/x-tex">tg+pj</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">双</mi><mi mathvariant="normal">省</mi><mi mathvariant="normal">一</mi></mrow><annotation encoding="application/x-tex">双省一</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">双</span><span class="mord cjk_fallback">省</span><span class="mord cjk_fallback">一</span></span></span></span></p>
-<p><s>省一窝发神贴!,可惜已经造了。</s></p>
-<p>手撸统计刷题数：50</p>
-<p><a href="https://www.luogu.com.cn/paste/qqlvhas6">关于窝这个菜鸡</a></p>
-<p>配置：某保护脸 pro 6</p>
-<p>前言：</p>
-<p>窝这是模仿我校初三神仙CMD的大事迹。</p>
-<p>未得许可，模仿转载。</p>
-<p>获得奖项：</p>
-<p>无（初赛直播弱智，无脑被淘汰。</p>
-<p>前两个号：</p>
-<p><a href="https://www.luogu.com.cn/user/270532">德丽莎最可爱(可以看出窝玩三崩子</a></p>
-<p><a href="https://www.luogu.com.cn/user/168247">霸炫吊炸天（同学反目</a></p>
-<p>搬上大大号的大事迹（：</p>
-<pre><code>1.2018.12.11 17：19 注册
-
-4.300提交祭
-
-5.2019.9.28 AC 111祭
-</code></pre>
-<p>膜拜区：</p>
-<blockquote>
-<p>我校cmd神仙,我校hyf神仙，以及Faker烁金.</p>
-</blockquote>
-<p>2020-01-10 注册</p>
-<p>其实这已经是我的第三个号了，前两个名字太丑了，弃坑了。</p>
-<p>前置学习模板：</p>
-<p><a href="https://www.luogu.com.cn/record/29121124">DS(并查集)</a><br>
-+<a href="https://www.luogu.com.cn/record/29121195">MST</a></p>
-<p><a href="https://www.luogu.com.cn/record/29121230">xxs</a><br>
-+<a href="https://www.luogu.com.cn/record/29683186">被<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi><mi>r</mi><mi>j</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">tarjin</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span>大带师卡到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>的sort</a></p>
-<p><a href="https://www.luogu.com.cn/record/30090809">我的名字</a><br>
-+<a href="https://www.luogu.com.cn/record/30091461">常数极小</a></p>
-<p><a href="https://www.luogu.com.cn/record/31085377"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Trie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span></a><br>
-+<a href="https://www.luogu.com.cn/record/30928972">被挤出单调队列的窝</a></p>
-<p>还有死了的SPFA。</p>
-<p>寒假：</p>
-<p>并学习</p>
-<p><a href="https://www.luogu.com.cn/record/32506906">dinic 最大流</a></p>
-<p><a href="https://www.luogu.com.cn/record/30730101">AC自动机</a></p>
-<p><a href="https://www.luogu.com.cn/record/31929971">IDAstar</a></p>
-<pre><code>如果一个人比你小，却比你还强，那么你就打不过他了。
-
-by---常州一中老司机 Krydom
-</code></pre>
-<p>比如说<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mi>l</mi><mi>a</mi><mi>m</mi><mi>r</mi><mi>i</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">Flamrie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">e</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mi>K</mi></mrow><annotation encoding="application/x-tex">AK</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>I</mi><mi>O</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">IOI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span></span></span></span>。</p>
-<p>寒风中迎来月测，文化课原地起飞.---3.29日</p>
-<p>月测原地起飞后毅然决然手撸一遍dinic.</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">然</mi><mi mathvariant="normal">后</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">常</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">被</mi><mi mathvariant="normal">卡</mi><mn>1</mn><mi>s</mi><mo separator="true">,</mo><mi mathvariant="normal">凉</mi><mi mathvariant="normal">凉</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">然后大常数被卡1s,凉凉.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">然</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">常</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">被</span><span class="mord cjk_fallback">卡</span><span class="mord">1</span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">凉</span><span class="mord cjk_fallback">凉</span><span class="mord">.</span></span></span></span></p>
-<pre><code>cmd神仙：都快初二了你还不学网络流？
-
-by---command_block神仙
-</code></pre>
-<p>听说Stylish有一个美化软件：</p>
-<p>搞了个Design.</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>o</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">Do:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">o</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>o</mi><mi>i</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">Noip</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">o</span><span class="mord mathdefault">i</span><span class="mord mathdefault">p</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2015</mn><mo>−</mo><mn>2018</mn></mrow><annotation encoding="application/x-tex">2015-2018</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">1</span><span class="mord">8</span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">对</mi><mi mathvariant="normal">于</mi><mi>D</mi><mi>P</mi><mi mathvariant="normal">并</mi><mi mathvariant="normal">不</mi><mi mathvariant="normal">熟</mi><mi mathvariant="normal">悉</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">窝</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">对于DP并不熟悉的窝:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">于</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord cjk_fallback">并</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">熟</span><span class="mord cjk_fallback">悉</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">窝</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span></p>
-<pre><code>老师:快学DP!没学开除
-</code></pre>
-<p>并开始学习各种DP:</p>
-<pre><code>简单DP
-
-区间DP
-
-数位DP
-
-状压DP
-
-单调队列DP
-
-考纲无限大：斜率DP
-
-以及平衡树（这个珂能要鸽一会
-</code></pre>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">心</mi><mi mathvariant="normal">血</mi><mi mathvariant="normal">来</mi><mi mathvariant="normal">潮</mi><mo separator="true">,</mo><mi>A</mi><mi>C</mi><mi mathvariant="normal">了</mi><mi>A</mi><mi>C</mi><mi mathvariant="normal">机</mi><mi mathvariant="normal">三</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">模</mi><mi mathvariant="normal">板</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">心血来潮,AC了AC机三道模板.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">心</span><span class="mord cjk_fallback">血</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">潮</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord cjk_fallback">了</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord cjk_fallback">机</span><span class="mord cjk_fallback">三</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">模</span><span class="mord cjk_fallback">板</span><span class="mord">.</span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mi>p</mi><mi>d</mi><mi>t</mi><mi>a</mi><mi>e</mi><mi>i</mi><mi>n</mi><mn>2020.4.9</mn></mrow><annotation encoding="application/x-tex">updtae in 2020.4.9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mord mathdefault">p</span><span class="mord mathdefault">d</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">e</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord">2</span><span class="mord">0</span><span class="mord">2</span><span class="mord">0</span><span class="mord">.</span><span class="mord">4</span><span class="mord">.</span><span class="mord">9</span></span></span></span></p>
-<p>开始施工 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">骗</mi><mi mathvariant="normal">分</mi><mi mathvariant="normal">笔</mi><mi mathvariant="normal">记</mi></mrow><annotation encoding="application/x-tex">骗分笔记</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">骗</span><span class="mord cjk_fallback">分</span><span class="mord cjk_fallback">笔</span><span class="mord cjk_fallback">记</span></span></span></span></p>
-<p>4.17 日 学习费用流</p>
-<p>updtae: A了平衡树和主席树。</p>
-]]></content>
     </entry>
 </feed>

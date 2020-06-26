@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://KMP-AC.github.io</id>
     <title>KMP的小栈</title>
-    <updated>2020-06-20T01:12:11.717Z</updated>
+    <updated>2020-06-26T12:40:10.884Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://KMP-AC.github.io"/>
     <link rel="self" href="https://KMP-AC.github.io/atom.xml"/>
@@ -10,6 +10,46 @@
     <logo>https://KMP-AC.github.io/images/avatar.png</logo>
     <icon>https://KMP-AC.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, KMP的小栈</rights>
+    <entry>
+        <title type="html"><![CDATA[whk游记]]></title>
+        <id>https://KMP-AC.github.io/post/whk-you-ji/</id>
+        <link href="https://KMP-AC.github.io/post/whk-you-ji/">
+        </link>
+        <updated>2020-06-26T12:39:53.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="文化课快乐"><strong>文化课快乐！</strong></h1>
+<p>月考第四次：</p>
+<h2 id="day-8">Day:-8</h2>
+<p>六一儿童节！老师让我们看电影，/kel，太良心了，可惜作业：</p>
+<p>语文:两张卷子 数学：莫得作业（太良心了） 英语：一张卷子 作业后来和一个dalao py 了一下，熬夜爆肝出来了。</p>
+<p>然后当天文化课测验，当场垫底。。。</p>
+<h2 id="day-7~-6">Day -7~-6</h2>
+<p>终于回归机房了，写了一个比较板子的莫队，然后还Re了三次。还发了一条犇犇。可惜被教练D了一顿。然后下午回到教室时，我的同学说他不行了。。</p>
+<h2 id="day-5">Day -5</h2>
+<p>才去了2天的机房，又被文化课拉了回来。月考冲冲冲！<br>
+结果好像看懂了状压DP(看书），可惜身为鸽王的我，已经咕咕咕了很久了。所以估计要咕到七月。（如同文文新闻般的有生之年）</p>
+<h2 id="day-1~-4">Day -1~-4</h2>
+<p><s>文化课作业好多啊</s>，文化课的题好<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mi>T</mi><mi>M</mi></mrow></msup></mrow><annotation encoding="application/x-tex">^{TM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span></span></span></span></span></span></span></span>套路啊，草稿纸在不知不觉中又少了一本。<br>
+文化课加油吧！</p>
+<h2 id="day-0">Day 0</h2>
+<p>才回来学校就要淦了...终于可以不去小学部的食堂吃饭了。<br>
+回到初中学堂就是爽，每天基本不吃早饭，结果虚了，好吧，要天天吃早饭。</p>
+<h2 id="day-1">Day 1</h2>
+<p>前三次月考都是年级前50，班里中上游左右。<br>
+草，又是下午考数学，上午考两科。感觉要翻车啊。。。</p>
+<p>语文：<br>
+平平淡淡，区分度不大，基础基本全对。阅读原则：把能写的都写上去。感觉在班里排名不错。实际得分：boom0</p>
+<p>英语：<br>
+车翻大了，md,宅男不知道吃肯德基吃的是汉堡，不应该吃麦当劳的吗？<s>肯德基不因该吃炸鸡吗</s>？其他还好。分数：boom0</p>
+<p>数学：<br>
+平平淡淡，也就内样。班里海星。分数：boom0</p>
+<p>总分：0+0+0=0<br>
+真好...</p>
+<h2 id="day-4">Day 4</h2>
+<p>开家长会了，草，翻车了还有Rank50.奖学金成功到手。</p>
+<h2 id="后记">后记：</h2>
+<h3 id="whk真香">whk真香！</h3>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 P5755 【[NOI2000]单词查找树】]]></title>
         <id>https://KMP-AC.github.io/post/ti-jie-p5755-noi2000dan-ci-cha-zhao-shu/</id>
